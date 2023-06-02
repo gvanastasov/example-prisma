@@ -26,9 +26,9 @@ npx prisma generate
 
 ## Features
 
-- express
-- prisma ORM
-- sqlite db
+- prisma migrations - schema management, migrations, modeling etc.
+- prisma seeding - script for seeding the database
+- prisma clearing tables - script for clearing the tables inside the database
 
 ## start
 
