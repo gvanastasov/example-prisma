@@ -29,6 +29,11 @@ npx prisma generate
 - prisma migrations - schema management, migrations, modeling etc.
 - prisma seeding - script for seeding the database
 - prisma clearing tables - script for clearing the tables inside the database
+- prisma renaming columns - a 4 step process:
+   1. Add new (renamed) column with same type and constraints - schema update
+   2. Run custom script to transfer column data - data duplication
+   3. Drop old column - schema update
+   4. Update all references
 
 ## start
 
