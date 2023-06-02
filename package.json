@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "db:seed": "node ./db/scripts/seed.js",
+    "db:clear": "node ./db/scripts/clear.js",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
     "lint:check": "eslint .",
