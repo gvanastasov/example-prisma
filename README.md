@@ -73,7 +73,7 @@ To seed db manually via script - seeding is done via fakerjs:
 npm run db:seed
 ```
 ## **License**
-his project is licensed under the [MIT License](./LICENSE).
+This project is licensed under the [MIT License](./LICENSE).
 
 ## **Acknowledgements**
 - Prisma - https://www.prisma.io/
