@@ -1,9 +1,18 @@
 #!/usr/bin/env node
-const { normalizePort } = require('../../utils')
-const { app } = require('../app.js');
+const { app } = require("../app.js");
+const { prisma } = require("../db");
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = "3000";
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+const server = app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+});
+
+process.on("SIGINT", async () => {
+    console.log("Shutting down gracefully...");
+    await prisma.$disconnect();
+    server.close(() => {
+        console.log("Server closed.");
+        process.exit(0);
+    });
+});

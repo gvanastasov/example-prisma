@@ -34,6 +34,8 @@ npx prisma generate
    2. Run custom script to transfer column data - data duplication
    3. Drop old column - schema update
    4. Update all references
+- prisma backup - creates a db backup.
+- UI can be tried out after starting on http://localhost:3000/
 
 ## start
 
