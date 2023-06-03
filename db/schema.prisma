@@ -2,6 +2,11 @@ generator client {
     provider = "prisma-client-js"
 }
 
+generator jsonSchema {
+    provider = "prisma-json-schema-generator"
+    output   = "./__generated"
+}
+
 datasource db {
     provider = "sqlite"
     url      = "file:./dev.db"

@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "username": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "LastName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "posts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Post"
+          }
+        }
+      }
+    },
+    "Post": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "content": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "published": {
+          "type": "boolean",
+          "default": false
+        },
+        "author": {
+          "$ref": "#/definitions/User"
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "user": {
+      "$ref": "#/definitions/User"
+    },
+    "post": {
+      "$ref": "#/definitions/Post"
+    }
+  }
+}

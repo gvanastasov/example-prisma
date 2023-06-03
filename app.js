@@ -3,8 +3,11 @@ const ejs = require("ejs");
 const path = require("path");
 
 const { prisma } = require("./db");
+const { install } = require("./plugins");
 
 const app = express();
+
+install(app, "swagger");
 
 app.engine(".html", ejs.renderFile);
 

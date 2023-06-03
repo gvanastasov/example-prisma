@@ -26,6 +26,7 @@ Before getting started, ensure that you have the following prerequisites install
 6. Create ui for demo
 7. Create experimentation scripts
 8. Inspect Prisma Studio
+9. Added json schema generator as secondary output from prisma.schema, which is then used (post transformation) into [swagger docs merging strategy](./plugins/swagger.js).
 
 ```sh
 npx prisma migrate dev --name init
@@ -47,6 +48,7 @@ npx prisma generate
    3. Drop old column - schema update
    4. Update all references
 - prisma backup - creates a db backup.
+- prisma json schema generator and transformer to OA3 for swagger
 
 ## **Usage**
 
