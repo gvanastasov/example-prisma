@@ -32,36 +32,42 @@ function getFakePost({ authorId }) {
         authorId,
         content: faker.lorem.paragraphs({ min: 1, max: 5 }),
         title: faker.lorem.words({ min: 3, max: 7 }),
-        created: faker.date.past({ years: 1 }),
+        created: faker.date.past({ years: 1 }).toISOString(),
         published: true,
     };
 }
 
 async function seed() {
     console.log("Seeding started...");
-
+    
     try {
-        for (let index = 0; index < 10; index++) {
-            const user = await prisma.user.create({
-                data: getFakeModel(PrismaClient.Prisma.ModelName.User),
-            });
+        await prisma.$transaction(async (tx) => {
+            for (let index = 0; index < 10; index++) {
+                const user = await tx.user.create({
+                    data: getFakeModel(PrismaClient.Prisma.ModelName.User),
+                });
 
-            let posts = Array.from(
-                { length: 10 }, 
-                getFakeModel(
-                    PrismaClient.Prisma.ModelName.Post, 
-                    { authorId: user.id }
-                )
-            );
+                let posts = Array.from(
+                    { length: faker.number.int({ min: 1, max: 10 }) }, 
+                    () => getFakeModel(
+                        PrismaClient.Prisma.ModelName.Post, 
+                        { authorId: user.id }
+                    )
+                );
 
-            await prisma.post.create( {
-                data: posts
-            });
-        }
-        console.log("Seeding completed successfully.");
+                await Promise.all(
+                    posts.map((post) => tx.post.create({ data: post }))
+                );
+                
+            }
+            console.log("Seeding completed successfully.");
+        });
     } catch (error) {
         console.error("Seeding failed:", error);
+    } finally {
+        await prisma.$disconnect();
     }
+    
 }
 
 seed()
