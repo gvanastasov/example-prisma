@@ -5,6 +5,7 @@ Example application showcasing the capabilities of Prisma ORM and schema managem
 Key terms:
 1. Prisma Migrate - is used schema management for your db.
 2. Prisma Client - is used for query interaction with the db.
+3. Prisma Studio - is used for visual interaction/edit of the db.
 
 ## **Prerequisites**
 
@@ -24,6 +25,7 @@ Before getting started, ensure that you have the following prerequisites install
 5. Create db init migration step
 6. Create ui for demo
 7. Create experimentation scripts
+8. Inspect Prisma Studio
 
 ```sh
 npx prisma migrate dev --name init
@@ -54,6 +56,20 @@ npm run start
 ```
 2. Access the application's UI by visiting http://localhost:3000/.
 
+To try out the built-in UI from prisma (Prisma Studio):
+```sh
+npx prisma studio
+```
+
+To clear db manually via script:
+```sh
+npm run db:clear
+```
+
+To seed db manually via script - seeding is done via fakerjs:
+```sh
+npm run db:seed
+```
 ## **License**
 his project is licensed under the [MIT License](./LICENSE).
 
