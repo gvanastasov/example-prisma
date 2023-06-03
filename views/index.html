@@ -4,7 +4,7 @@
     <h1>Users</h1>
     <ul id="users">
       <% users.forEach(function(user){ %>
-        <li><%= user.firstName %>&nbsp;<%= user.LastName %></li>
+        <li><a href="/<%= user.id %>/posts"><%= user.firstName %>&nbsp;<%= user.LastName %></a></li>
       <% }) %>
     </ul>
 </div>

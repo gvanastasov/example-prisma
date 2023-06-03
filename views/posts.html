@@ -1,0 +1,17 @@
+<%- include('./layout/header.html') -%>
+
+<div>
+    <h1>User: <%= user.firstName %>&nbsp;<%= user.LastName %></h1>
+    <ul id="posts">
+        <% user.posts.forEach(function(post){ %>
+        <li>
+            <div><%= post.title %></div>
+            <div><%= post.content %></div>
+            <legend>Created: <%= post.created %></legend>
+        </li>
+        <% }) %>
+    </ul>
+    <a href="/">Back...</a>
+</div>
+
+<%- include('./layout/footer.html') -%>

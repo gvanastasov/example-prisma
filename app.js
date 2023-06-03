@@ -20,6 +20,20 @@ app.get("/", async (_req, res, next) => {
     }
 });
 
+app.get("/:id/posts", async (req, res, next) => {
+    const { id } = req.params;
+    try {
+        const user = await prisma.user
+            .findUnique({ 
+                where: { id: Number(id) },
+                include: { posts: true }
+            });
+        res.render("posts", { user });
+    } catch (error) {
+        next(error);
+    }
+});
+
 app.use(express.static(path.join(__dirname, "public")));
 
 module.exports = { app };
